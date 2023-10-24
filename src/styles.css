@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+p {
+  text-align: justify;
+}
+
 .img-bg {
   background-image: url(./assets/img/fondo.jpeg);
   background-size: cover;
