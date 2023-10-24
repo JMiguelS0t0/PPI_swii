@@ -1,0 +1,22 @@
+<app-nav></app-nav>
+
+<h1 class="text-center text-black mt-3">Catálogo</h1>
+
+<div class="bg-white text-center pt-2 p-5 mb-2 text-center">
+    <div class="row">
+        <ng-container *ngFor="let paquete of paquetes">
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card card-personalizada img-bg">
+                    <img [src]="paquete.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ paquete.title }}</h5>
+                        <p class="card-text text-black">{{ paquete.description }}</p>
+                        <a href="#" class="btn btn-bg">Ver información</a>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+.img-bg {
+  background-image: url(./assets/img/fondo.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* ------------ BOTONES ------------*/
+
+.btn-bg {
+  background-image: url(./assets/img/boton.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 767px) {
+  .btn-bg {
+    width: 100%;
+  }
+}
+
+.btn-grande {
+  color: black;
+  margin: 15px;
+  width: 50%;
+  height: 150px;
+}
+
+@media (max-width: 767px) {
+  .btn-grande {
+    width: 100%;
+  }
+}
+
+/*----------------------- FOOTER -----------------------*/
+
+footer {
+  height: auto;
+}
