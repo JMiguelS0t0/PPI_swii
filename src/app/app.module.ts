@@ -7,6 +7,8 @@ import { ServiciosPrestadosComponent } from './servicios-prestados/servicios-pre
 import { SharedModule } from './shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogoComponent } from './catalogo/catalogo.component';
+import { EntServiciosComponent } from './ent-servicios/ent-servicios.component';
+import { EntCatalogoComponent } from './ent-catalogo/ent-catalogo.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -14,12 +16,20 @@ const APP_ROUTES: Routes = [
     component: InicioComponent,
   },
   {
-    path: 'serviciosprestados',
+    path: 'servicioprestado',
     component: ServiciosPrestadosComponent,
+  },
+  {
+    path: 'servicio',
+    component: EntServiciosComponent,
   },
   {
     path: 'catalogo',
     component: CatalogoComponent,
+  },
+  {
+    path: 'entcatalogo',
+    component: EntCatalogoComponent,
   },
   {
     path: '**',
@@ -34,6 +44,8 @@ const APP_ROUTES: Routes = [
     InicioComponent,
     ServiciosPrestadosComponent,
     CatalogoComponent,
+    EntServiciosComponent,
+    EntCatalogoComponent,
   ],
   imports: [
     BrowserModule,
