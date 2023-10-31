@@ -1,13 +1,11 @@
 <body>
-    <app-nav></app-nav>
     <!-- 1° Seccion -->
     <section class="seccion mb-2 text-white p-5 d-flex align-items-center background-image">
         <div class="w-100">
             <h1 class="display-2 fw-bold ms-md-5 fst-italic">Muy Delicioso
                 <span class="d-block mb-2">Compruébalo</span>
             </h1>
-            <div
-                class="bgrounded mr-5 mb-2 pt-3 bg-dark opacity-75 text-white fst-italic fs-2 d-inline-block my-auto">
+            <div class="bgrounded mr-5 mb-2 pt-3 bg-dark opacity-75 text-white fst-italic fs-2 d-inline-block my-auto">
                 <p class="text-center">Tu Organizadora Preferida</p>
             </div>
         </div>
@@ -50,8 +48,8 @@
             <h1 class="mb-2">Nuestros Servicios</h1>
             <p class="mb-5 text-center">Descubre lo que tenemos para ti!</p>
             <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-                <button class="btn btn-bg btn-grande">Catalogo</button>
-                <button class="btn btn-bg btn-grande">Servicios Prestados</button>
+                <button class="btn btn-bg btn-grande" routerLink="/catalogo">Catalogo</button>
+                <button class="btn btn-bg btn-grande" routerLink="/servicioprestado">Servicios Prestados</button>
             </div>
         </div>
     </section>
@@ -126,5 +124,4 @@
         </div>
     </section>
 
-    <app-footer></app-footer>
 </body>
