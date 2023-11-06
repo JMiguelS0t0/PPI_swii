@@ -1,0 +1,75 @@
+.ancho-55 {
+  width: 70%;
+  padding: 0.5rem 0 0 1rem;
+  letter-spacing: 2px;
+}
+
+.seccion {
+  height: 600px;
+}
+
+.footer-padding {
+  padding: 0.8rem;
+}
+
+.fontsize {
+  font-size: 20px;
+}
+
+.background-image {
+  background-image: url(../../assets/img/cena.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* .background-image::before {
+  content: "";
+  position: absolute;
+  height: 64.5%;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+
+
+
+/*-------------------- SERVICIOS --------------------*/
+
+.servicios-m {
+  margin-bottom: 140px;
+}
+
+/* ------------------ FORMULARIO ------------------ */
+form {
+  text-align: start;
+  background-image: url(../../assets/img/fondo.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+  font-size: 15px;
+}
+
+/*------------------ CONTACTO E ICONOS ------------------*/
+.h-contacto {
+  min-height: 200px;
+}
+
+.contenedor-icono svg {
+  width: 50px;
+  margin: 15px;
+}
+
+.bgrounded {
+  border-radius: 50px 800px 50px 800px;
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+  .bgrounded {
+    width: 110%;
+  }
+}
