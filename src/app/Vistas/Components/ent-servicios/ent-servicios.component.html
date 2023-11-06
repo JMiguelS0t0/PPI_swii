@@ -1,0 +1,21 @@
+<div class="container m-5 mx-auto text-center">
+    <img [src]="servicio.img" class="rounded img-fluid" alt="foto">
+    <p class="p-md-5 pt-3 fs-5">{{servicio.descripcion}}</p>
+
+    <div class="justify-content-center">
+        <div class="list-group mx-auto">
+            <div href="#" class="list-group-item justify-content-center p-2">
+                <h5 class="mb-0">Paquete: {{servicio.nombre_paquete}}</h5>
+            </div>
+            <div class="list-group-item">
+                <div class="w-2 justify-content-center">
+                    <h5 class="mb-0">Personalizacion:</h5>
+                </div>
+                <p class="mb-0 mt-1">{{servicio.personalizacion}}</p>
+            </div>
+        </div>
+    </div>
+
+
+    <button class="btn btn-bg mt-5" (click)="routerPag('servicioprestado')">Volver</button>
+</div>

@@ -50,3 +50,12 @@ img {
   align-items: center;
   z-index: 999;
 }
+
+.botones {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

@@ -43,3 +43,13 @@ p {
 footer {
   height: auto;
 }
+
+.hoverIcon {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hoverIcon:hover {
+  color: rgb(105, 105, 105);
+  cursor: pointer;
+}
