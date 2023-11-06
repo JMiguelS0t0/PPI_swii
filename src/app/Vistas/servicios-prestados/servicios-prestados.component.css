@@ -1,0 +1,10 @@
+.btn-bg {
+  height: 60px;
+  width: 28%;
+}
+
+@media (max-width: 767px) {
+  .btn-bg {
+    width: 100%;
+  }
+}

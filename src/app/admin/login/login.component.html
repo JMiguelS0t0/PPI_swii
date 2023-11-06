@@ -5,24 +5,42 @@
                 <img src="../../../assets/img/Logo.png" class="img-fluid mb-5" alt="Logo">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form>
+                <form [formGroup]="loginForm">
+                   <p class="text-danger">{{errorMessage}}</p>
+                    <!------------------------ EMAIL ------------------------>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="email">Email address</label>
                         <input type="email" id="email" class="form-control form-control-lg"
-                            placeholder="Enter a valid email address" />
+                            placeholder="Enter a valid email address" formControlName="correo" />
+                        <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="text-danger">
+                            <div *ngIf="correo.errors?.['required']">
+                                El Correo es obligatorio!
+                            </div>
+                            <div *ngIf="correo.errors?.['email']">
+                                Ingresa un correo verdadero.
+                            </div>
+                        </div>
                     </div>
 
+                    <!------------------------ CONTRASENA ------------------------>
                     <div class="form-outline mb-3">
                         <label class="form-label" for="password">Password</label>
                         <input type="password" id="password" class="form-control form-control-lg"
-                            placeholder="Enter password" />
+                            placeholder="Enter password" formControlName="contrasena" />
+                        <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)" class="text-danger">
+                            <div *ngIf="contrasena.errors?.['required']">
+                                La contraseña es obligatoria!
+                            </div>
+                        </div>
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="button" class="btn btn-bg btn-lg">Login</button>
+                        <button (click)="login()" type="button" class="btn btn-bg btn-lg">Login</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+a

@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './inicio/inicio.component';
-import { ServiciosPrestadosComponent } from './servicios-prestados/servicios-prestados.component';
-import { EntServiciosComponent } from './ent-servicios/ent-servicios.component';
-import { CatalogoComponent } from './catalogo/catalogo.component';
+
+import { authGuard } from './guards/auth.guards';
+
+import { homeComponent } from './home/home.component';
 import { LoginComponent } from './admin/login/login.component';
 import { CrudComponent } from './admin/crud/crud.component';
-import { EntCatalogoComponent } from './ent-catalogo/ent-catalogo.component';
+import { CatalogoComponent } from './Vistas/catalogo/catalogo.component';
+import { EntServiciosComponent } from './Vistas/ent-servicios/ent-servicios.component';
+import { ServiciosPrestadosComponent } from './Vistas/servicios-prestados/servicios-prestados.component';
+import { EntCatalogoComponent } from './Vistas/ent-catalogo/ent-catalogo.component';
 
 const routes: Routes = [
   {
     path: 'inicio',
-    component: InicioComponent,
+    component: homeComponent,
   },
   {
     path: 'servicioprestado',
     component: ServiciosPrestadosComponent,
   },
   {
-    path: 'servicio',
+    path: 'servicio/:id',
     component: EntServiciosComponent,
   },
   {
@@ -26,7 +29,7 @@ const routes: Routes = [
     component: CatalogoComponent,
   },
   {
-    path: 'entcatalogo',
+    path: 'entcatalogo/:id',
     component: EntCatalogoComponent,
   },
   {
@@ -36,6 +39,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: CrudComponent,
+    canActivate: [authGuard],
   },
   {
     path: '**',
