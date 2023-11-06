@@ -39,6 +39,7 @@ export class CrudComponent implements OnInit {
 
   deleteCatalogo(Id: number) {
     this.apiService.deleteCatalogo(Id);
+    this.ocultarVisibleBtnDelete();
     this.getCatalogo();
   }
 
@@ -92,15 +93,32 @@ export class CrudComponent implements OnInit {
   }
 
   // FORMULARIO INSERT CATALOGO
-
   public formVisible: boolean = false;
-
   MostrarFormulario() {
     this.formVisible = true;
   }
 
   OcultarFormulario() {
     this.formVisible = false;
+  }
+  // ----------
+  public VisibleBtn: boolean = false;
+  mostrarVisibleBtn() {
+    this.VisibleBtn = true;
+  }
+
+  ocultarVisibleBtn() {
+    this.VisibleBtn = false;
+  }
+
+  /** BOTONES CONFIRMACION - DELETE*/
+  public VisibleBtnDelete: boolean = false;
+  mostrarVisibleBtnDelete() {
+    this.VisibleBtnDelete = true;
+  }
+
+  ocultarVisibleBtnDelete() {
+    this.VisibleBtnDelete = false;
   }
 
   // FORMULARIO UPDATE CATALOGO
@@ -161,6 +179,7 @@ export class CrudComponent implements OnInit {
   deleteServicio(Id: number) {
     this.apiService.deleteServicio(Id);
     this.getServicios();
+    this.ocultarVisibleBtnDeleteS();
   }
 
   getNombrePaquete(id: number): string {
@@ -217,7 +236,6 @@ export class CrudComponent implements OnInit {
   }
 
   // FORMULARIO INSERT SERVICIOS
-
   public formServicios: boolean = false;
 
   MostrarFormularioS() {
@@ -226,6 +244,26 @@ export class CrudComponent implements OnInit {
 
   OcultarFormularioS() {
     this.formServicios = false;
+  }
+
+  /** BOTONES CONFIRMACION - DELETE SERVICIOS*/
+  public VisibleBtnDeleteS: boolean = false;
+  mostrarVisibleBtnDeleteS() {
+    this.VisibleBtnDeleteS = true;
+  }
+
+  ocultarVisibleBtnDeleteS() {
+    this.VisibleBtnDeleteS = false;
+  }
+
+  /** BOTONES CONFIRMACION - UPDATE SERVICIOS*/
+  public VisibleBtnUpdateS: boolean = false;
+  mostrarVisibleBtnUpdateS() {
+    this.VisibleBtnUpdateS = true;
+  }
+
+  ocultarVisibleBtnUpdateS() {
+    this.VisibleBtnUpdateS = false;
   }
 
   // FORMULARIO UPDATE SERVICIOS

@@ -6,10 +6,10 @@ import { authGuard } from './guards/auth.guards';
 import { homeComponent } from './home/home.component';
 import { LoginComponent } from './admin/login/login.component';
 import { CrudComponent } from './admin/crud/crud.component';
-import { CatalogoComponent } from './Vistas/catalogo/catalogo.component';
-import { EntServiciosComponent } from './Vistas/ent-servicios/ent-servicios.component';
-import { ServiciosPrestadosComponent } from './Vistas/servicios-prestados/servicios-prestados.component';
-import { EntCatalogoComponent } from './Vistas/ent-catalogo/ent-catalogo.component';
+import { CatalogoComponent } from './Vistas/Components/catalogo/catalogo.component';
+import { EntServiciosComponent } from './Vistas/Components/ent-servicios/ent-servicios.component';
+import { ServiciosPrestadosComponent } from './Vistas/Components/servicios-prestados/servicios-prestados.component';
+import { EntCatalogoComponent } from './Vistas/Components/ent-catalogo/ent-catalogo.component';
 
 const routes: Routes = [
   {

@@ -1,0 +1,30 @@
+img {
+  width: 60%;
+}
+
+@media (max-width: 767px) {
+  img {
+    width: 100%;
+  }
+}
+
+.list-group {
+  width: 80%;
+}
+
+@media (max-width: 767px) {
+  .list-group {
+    width: 100%;
+  }
+}
+
+.btn-bg {
+  width: 25%;
+  height: 50px;
+}
+
+@media (max-width: 767px) {
+  .btn-bg {
+    width: 100%;
+  }
+}

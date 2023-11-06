@@ -1,0 +1,38 @@
+svg {
+  width: 30px;
+  margin-left: 8px;
+}
+
+.comprar {
+  padding: 10px;
+  height: 320px;
+}
+
+@media (max-width: 767px) {
+  .comprar {
+    height: auto;
+  }
+}
+
+.btn-comprar {
+  justify-content: center;
+  height: 50px;
+  width: 30%;
+}
+
+.btn-volver {
+  width: 15%;
+  height: 50px;
+}
+
+@media (max-width: 767px) {
+  .btn-volver {
+    width: 100%;
+  }
+
+  .btn-comprar {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -41,13 +41,20 @@
                                 d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                         </svg>
                     </button>
-                    <button (click)="deleteCatalogo(catalogo.id)" href="" class="btn btn-danger">
+                    <button class="btn btn-danger" (click)="mostrarVisibleBtnDelete()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash3-fill" viewBox="0 0 16 16">
                             <path
                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a.2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                         </svg>
                     </button>
+                    <div class="overlay" *ngIf="VisibleBtnDelete">
+                        <div class="botones">
+                            <h2>¿Seguro?</h2>
+                            <button class="btn btn-danger m-2" (click)="ocultarVisibleBtnDelete()">Cancelar</button>
+                            <button class="btn btn-success m-2" (click)="deleteCatalogo(catalogo.id)">Confirmar</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -183,10 +190,19 @@
         </div>
         <div class="modal-footer m-2">
             <button class="btn btn-danger m-2" (click)="OcultarUpdateFormulario()">Cerrar</button>
-            <button class="btn btn-success m-2" (click)="updateCatalogo()">Actualizar</button>
+            <button class="btn btn-success m-2" (click)="mostrarVisibleBtn()">Actualizar</button>
+        </div>
+        <div class="overlay" *ngIf="VisibleBtn">
+            <div class="botones">
+                <h2>¿Seguro?</h2>
+                <button class="btn btn-danger m-2" (click)="ocultarVisibleBtn()">Cancelar</button>
+                <button class="btn btn-success m-2" (click)="updateCatalogo()">Confirmar</button>
+            </div>
         </div>
     </form>
 </div>
+
+
 
 
 <hr>
@@ -235,13 +251,21 @@
                                 d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                         </svg>
                     </button>
-                    <button (click)="deleteServicio(servicios.id)" class="btn btn-danger">
+                    <button (click)="mostrarVisibleBtnDeleteS()" class="btn btn-danger">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash3-fill" viewBox="0 0 16 16">
                             <path
                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a.2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                         </svg>
                     </button>
+                    <div class="overlay" *ngIf="VisibleBtnDeleteS">
+                        <div class="botones">
+                            <h2>¿Seguro?</h2>
+                            <button class="btn btn-danger m-2" (click)="ocultarVisibleBtnDeleteS()">Cancelar</button>
+                            <button class="btn btn-success m-2"
+                                (click)="deleteServicio(servicios.id)">Confirmar</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -322,7 +346,6 @@
 
 
 <!-- ACTUALIZAR SERVICIO -->
-
 <div class="overlay" *ngIf="formUpdateServiciosVisible">
     <form class="container formularios" [formGroup]="insertedServiciosForm">
         <div class="">
@@ -376,7 +399,7 @@
 
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="text" class="form-control" formControlName="img">
+                <input type="file" class="form-control" formControlName="img">
                 <div *ngIf="imgServicios.invalid && (imgServicios.dirty || imgServicios.touched)" class="text-danger">
                     <div *ngIf="imgServicios.errors?.['required']">
                         La imagen es obligatoria!
@@ -389,7 +412,14 @@
         </div>
         <div class="modal-footer m-2">
             <button class="btn btn-danger m-2" (click)="OcultarUpdateServiciosFormulario()">Cerrar</button>
-            <button class="btn btn-success m-2" (click)="updateServicios()">Actualizar</button>
+            <button class="btn btn-success m-2" (click)="mostrarVisibleBtnUpdateS()">Actualizar</button>
+        </div>
+        <div class="overlay" *ngIf="VisibleBtnUpdateS">
+            <div class="botones">
+                <h2>¿Seguro?</h2>
+                <button class="btn btn-danger m-2" (click)="ocultarVisibleBtnUpdateS()">Cancelar</button>
+                <button class="btn btn-success m-2" (click)="updateServicios()">Confirmar</button>
+            </div>
         </div>
     </form>
 </div>

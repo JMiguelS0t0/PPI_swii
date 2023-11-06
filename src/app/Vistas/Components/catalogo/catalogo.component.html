@@ -1,0 +1,20 @@
+<h1 class="text-center text-black mt-3">Catálogo</h1>
+
+<div class="bg-white text-center pt-2 p-5 mb-2 text-center">
+    <div class="row">
+        <ng-container *ngFor="let catalogo of listacatalogo">
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card card-personalizada img-bg">
+                    <img [src]="catalogo.img" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ catalogo.nombre }}</h5>
+                        <p class="card-text text-black">{{LenghtService.caracteresDescripcion(catalogo.descripcion, 40)}}
+                        </p>
+                        <button class="btn btn-bg" (click)="routerPag('entcatalogo/' + catalogo.id)">Ver
+                            información</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
