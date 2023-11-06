@@ -32,8 +32,6 @@
   background-color: rgba(0, 0, 0, 0.5);
 } */
 
-
-
 /*-------------------- SERVICIOS --------------------*/
 
 .servicios-m {
@@ -52,6 +50,7 @@ form {
   align-items: center;
   font-size: 15px;
 }
+
 
 /*------------------ CONTACTO E ICONOS ------------------*/
 .h-contacto {
@@ -73,3 +72,4 @@ form {
     width: 110%;
   }
 }
+
