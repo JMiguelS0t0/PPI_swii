@@ -1,0 +1,212 @@
+<div class="table-responsive-xl m-md-5">
+    <div class="titulo-tabla p-3 justify-content-between">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Servicios Prestados</h2>
+            </div>
+            <div class="col-sm-6 text-end">
+                <button class="btn btn-success" (click)="MostrarFormularioS()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                    </svg> <span class="ms-3">Agregar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Paquete</th>
+                <th scope="col">Personalizacion</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let servicios of listaservicios">
+                <td>{{getNombrePaquete(servicios.paquete)}}</td>
+                <td>{{servicios.personalizacion}}</td>
+                <td>{{servicios.descripcion}}</td>
+                <td>
+                    <img [src]="servicios.img" alt="">
+                </td>
+                <td>
+                    <button (click)="MostrarFormularioUpdateServicios(servicios.id)" class="btn btn-warning m-2"> <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                        </svg>
+                    </button>
+                    <button (click)="mostrarVisibleBtnDeleteS()" class="btn btn-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a.2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                        </svg>
+                    </button>
+                    <div class="overlay" *ngIf="VisibleBtnDeleteS">
+                        <div class="botones">
+                            <h4>¿Seguro?</h4>
+                            <button class="btn btn-danger m-2" (click)="ocultarVisibleBtnDeleteS()">Cancelar</button>
+                            <button class="btn btn-success m-2"
+                                (click)="deleteServicio(servicios.id)">Confirmar</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="overlay" *ngIf="formServicios">
+    <form class="container formularios" [formGroup]="insertedServiciosForm">
+        <div class="">
+            <h4 class="">Agregar Servicio</h4>
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label>Paquete</label>
+                <select name="" id="" class="form-control" formControlName="paquete">
+                    <option value="" disabled selected>-- Por favor seleccione una --</option>
+                    <option *ngFor="let nombre of nombresCatalogo" [value]="nombre.id">
+                        {{nombre.nombre}}
+                    </option>
+                    <div *ngIf="paqueteServicios.invalid && (paqueteServicios.dirty || paqueteServicios.touched)"
+                        class="text-danger">
+                        <div *ngIf="paqueteServicios.errors?.['required']">
+                            Escoge un paquete! </div>
+                        <div *ngIf="paqueteServicios.errors?.['paqueteServicios']">
+                            Ingresa algun texto
+                        </div>
+                    </div>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Personalizacion</label>
+                <textarea class="form-control" formControlName="personalizacion"></textarea>
+                <div *ngIf="personalizacion.invalid && (personalizacion.dirty || personalizacion.touched)"
+                    class="text-danger">
+                    <div *ngIf="personalizacion.errors?.['required']">
+                        Escribe algo sobre la personalizacion!
+                    </div>
+                    <div *ngIf="personalizacion.errors?.['personalizacion']">
+                        Ingresa algun texto
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Descripcion</label>
+                <textarea class="form-control" formControlName="descripcion"></textarea>
+                <div *ngIf="descripcionServicios.invalid && (descripcionServicios.dirty || descripcionServicios.touched)"
+                    class="text-danger">
+                    <div *ngIf="descripcionServicios.errors?.['required']">
+                        Escribe algo sobre la descripcion!
+                    </div>
+                    <div *ngIf="descripcionServicios.errors?.['descripcionServicios']">
+                        Ingresa algun texto
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Imagen</label>
+                <input type="text" class="form-control" formControlName="img">
+                <div *ngIf="imgServicios.invalid && (imgServicios.dirty || imgServicios.touched)" class="text-danger">
+                    <div *ngIf="imgServicios.errors?.['required']">
+                        La imagen es obligatoria!
+                    </div>
+                    <div *ngIf="imgServicios.errors?.['imgServicios']">
+                        Sube una imagen
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer m-2">
+            <button class="btn btn-danger m-2" (click)="OcultarFormularioS()">Cerrar</button>
+            <button class="btn btn-success m-2" (click)="insertServicios()">Agregar</button>
+        </div>
+    </form>
+</div>
+
+<div class="overlay" *ngIf="formUpdateServiciosVisible">
+    <form class="container formularios" [formGroup]="insertedServiciosForm">
+        <div class="">
+            <h4 class="">Agregar Servicio</h4>
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label>Paquete</label>
+                <select name="" id="" class="form-control" formControlName="paquete">
+                    <option value="" disabled selected>-- Por favor seleccione una --</option>
+                    <option *ngFor="let nombre of nombresCatalogo" [value]="nombre.id">
+                        {{nombre.nombre}}
+                    </option>
+                    <div *ngIf="paqueteServicios.invalid && (paqueteServicios.dirty || paqueteServicios.touched)"
+                        class="text-danger">
+                        <div *ngIf="paqueteServicios.errors?.['required']">
+                            Escoge un paquete! </div>
+                        <div *ngIf="paqueteServicios.errors?.['paqueteServicios']">
+                            Ingresa algun texto
+                        </div>
+                    </div>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Personalizacion</label>
+                <textarea class="form-control" formControlName="personalizacion"></textarea>
+                <div *ngIf="personalizacion.invalid && (personalizacion.dirty || personalizacion.touched)"
+                    class="text-danger">
+                    <div *ngIf="personalizacion.errors?.['required']">
+                        Escribe algo sobre la personalizacion!
+                    </div>
+                    <div *ngIf="personalizacion.errors?.['personalizacion']">
+                        Ingresa algun texto
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Descripcion</label>
+                <textarea class="form-control" formControlName="descripcion"></textarea>
+                <div *ngIf="descripcionServicios.invalid && (descripcionServicios.dirty || descripcionServicios.touched)"
+                    class="text-danger">
+                    <div *ngIf="descripcionServicios.errors?.['required']">
+                        Escribe algo sobre la descripcion!
+                    </div>
+                    <div *ngIf="descripcionServicios.errors?.['descripcionServicios']">
+                        Ingresa algun texto
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Imagen</label>
+                <input type="file" class="form-control" formControlName="img">
+                <div *ngIf="imgServicios.invalid && (imgServicios.dirty || imgServicios.touched)" class="text-danger">
+                    <div *ngIf="imgServicios.errors?.['required']">
+                        La imagen es obligatoria!
+                    </div>
+                    <div *ngIf="imgServicios.errors?.['imgServicios']">
+                        Sube una imagen
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer m-2">
+            <button class="btn btn-danger m-2" (click)="OcultarUpdateServiciosFormulario()">Cerrar</button>
+            <button class="btn btn-success m-2" (click)="mostrarVisibleBtnUpdateS()">Actualizar</button>
+        </div>
+        <div class="overlay" *ngIf="VisibleBtnUpdateS">
+            <div class="botones">
+                <h4>¿Seguro?</h4>
+                <button class="btn btn-danger m-2" (click)="ocultarVisibleBtnUpdateS()">Cancelar</button>
+                <button class="btn btn-success m-2" (click)="updateServicios()">Confirmar</button>
+            </div>
+        </div>
+    </form>
+</div>

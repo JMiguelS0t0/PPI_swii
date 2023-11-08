@@ -1,0 +1,17 @@
+@media (max-width: 767px) {
+  .centrar {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.btn-comprar {
+  justify-content: center;
+  height: 50px;
+  width: 30%;
+}
+
+.btn-volver {
+  width: 15%;
+  height: 50px;
+}
