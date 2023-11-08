@@ -10,7 +10,7 @@ import { CatalogoComponent } from './Vistas/Components/catalogo/catalogo.compone
 import { EntServiciosComponent } from './Vistas/Components/ent-servicios/ent-servicios.component';
 import { ServiciosPrestadosComponent } from './Vistas/Components/servicios-prestados/servicios-prestados.component';
 import { EntCatalogoComponent } from './Vistas/Components/ent-catalogo/ent-catalogo.component';
-import { ContactoComponent } from './admin/contacto/contacto.component';
+import { ContactoComponent } from './admin/Components/contacto/contacto.component';
 
 const routes: Routes = [
   {

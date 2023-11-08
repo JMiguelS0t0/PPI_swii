@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { apiService } from '../../../services/api.service';
+import { catalogoService as apiService } from '../../../services/catalogo.service';
 
 @Component({
   selector: 'app-ent-catalogo',

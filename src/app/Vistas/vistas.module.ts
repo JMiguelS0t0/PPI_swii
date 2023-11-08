@@ -4,9 +4,9 @@ import { ServiciosPrestadosComponent } from './Components/servicios-prestados/se
 import { CatalogoComponent } from './Components/catalogo/catalogo.component';
 import { EntCatalogoComponent } from './Components/ent-catalogo/ent-catalogo.component';
 import { EntServiciosComponent } from './Components/ent-servicios/ent-servicios.component';
+import { ContactoComponent } from '../admin/Components/contacto/contacto.component';
 
 import { CommonModule } from '@angular/common';
-import { ContactoComponent } from '../admin/contacto/contacto.component';
 
 @NgModule({
   declarations: [
