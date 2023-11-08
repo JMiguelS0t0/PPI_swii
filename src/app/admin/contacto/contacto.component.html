@@ -1,0 +1,27 @@
+<div class="text-black text-center p-5 pt-2 mb-2 container mt-3">
+    <button (click)="routerPag('admin')"
+        class="btn btn-bg btn-volver mb-3 d-flex justify-content-center align-items-center">Volver</button>
+    <div class="row">
+        <div class="mb-3 col-12 col-lg-6 d-flex flex-column">
+            <h5 class="text-center">Nombre:</h5>
+            <p class="text-center">{{contacto.nombre}}</p>
+        </div>
+        <div class="mb-3 col-12 col-lg-6 d-flex flex-column">
+            <h5 class="text-center">Telefono:</h5>
+            <p class="text-center">{{contacto.telefono}}</p>
+        </div>
+        <div class="mb-3 col-12 d-flex flex-column">
+            <h5>Correo:</h5>
+            <p class="text-center">{{contacto.correo}}</p>
+        </div>
+        <div class="mb-3 col-12 d-flex flex-column">
+            <h5>Mensaje:</h5>
+            <p>{{contacto.mensaje}}</p>
+        </div>
+    </div>
+    <div class="d-flex comprar justify-content-end align-items-end" *ngIf="contacto.telefono.length === 10">
+        <a type="submit" class="btn mt-3 btn-bg text-black" [attr.href]="'https://wa.me/+57'+contacto.telefono">
+            Contactar
+        </a>
+    </div>
+</div>
