@@ -10,6 +10,7 @@ import { CatalogoComponent } from './Vistas/Components/catalogo/catalogo.compone
 import { EntServiciosComponent } from './Vistas/Components/ent-servicios/ent-servicios.component';
 import { ServiciosPrestadosComponent } from './Vistas/Components/servicios-prestados/servicios-prestados.component';
 import { EntCatalogoComponent } from './Vistas/Components/ent-catalogo/ent-catalogo.component';
+import { ContactoComponent } from './admin/contacto/contacto.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'admin',
     component: CrudComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'contacto/:id',
+    component: ContactoComponent,
     canActivate: [authGuard],
   },
   {

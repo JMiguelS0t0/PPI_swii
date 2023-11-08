@@ -60,28 +60,31 @@
         <h1>Contactanos</h1>
 
         <div class="d-flex justify-content-center">
-            <form class="col-lg-9 col-12">
+            <form class="col-lg-9 col-12" [formGroup]="insertContactoForm">
                 <div class="row">
                     <div class="mb-3 col-12 col-lg-6">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre">
+                        <input type="text" class="form-control" formControlName="nombre">
                     </div>
                     <div class="mb-3 col-12 col-lg-6">
                         <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono">
+                        <input type="tel" class="form-control" formControlName="telefono">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label text-start">Correo</label>
-                    <input type="email" class="form-control" id="correo">
+                    <input type="email" class="form-control" formControlName="correo">
                 </div>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Escribenos tu mensaje aquí" id="mensaje"
+                    <textarea class="form-control" placeholder="Escribenos tu mensaje aquí" formControlName="mensaje"
                         style="height: 100px"></textarea>
                     <label for="mensaje">Mensaje</label>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn mt-3 btn-bg">Enviar</button>
+                    <button (click)="insertContacto()" class="btn mt-3 btn-bg">Enviar</button>
+                </div>
+                <div *ngIf="successAnuncio">
+                    <p class="text-center fw-bold fs-5 animacionBtn">Enviado, nos pondremos en contacto contigo en cuanto podamos</p>
                 </div>
             </form>
         </div>

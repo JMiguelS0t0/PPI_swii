@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { apiService } from '../../services/api.service';
 import { CatalogoModel, ServiciosModel } from 'src/app/models';
 import { ToastrService } from 'ngx-toastr';
+import { contactoService } from 'src/app/services/contacto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crud',
@@ -13,17 +15,24 @@ export class CrudComponent implements OnInit {
   public listacatalogo: any = [];
   public listaservicios: any = [];
   public nombresCatalogo: any[] = [];
+  public listacontacto: any[] = [];
 
   constructor(
     private apiService: apiService,
+    private contactoService: contactoService,
     private formBuidler: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getCatalogo();
-
+    this.getContacto();
     this.getServicios();
+  }
+
+  routerPag(url: string): void {
+    this.router.navigate([url]);
   }
 
   //------------------------------CATALOGO
@@ -38,9 +47,11 @@ export class CrudComponent implements OnInit {
   }
 
   deleteCatalogo(Id: number) {
-    this.apiService.deleteCatalogo(Id);
     this.ocultarVisibleBtnDelete();
-    this.getCatalogo();
+    this.apiService.deleteCatalogo(Id);
+    setTimeout(() => {
+      this.getCatalogo();
+    }, 900);
   }
 
   showError = false;
@@ -177,9 +188,11 @@ export class CrudComponent implements OnInit {
   }
 
   deleteServicio(Id: number) {
-    this.apiService.deleteServicio(Id);
-    this.getServicios();
     this.ocultarVisibleBtnDeleteS();
+    this.apiService.deleteServicio(Id);
+    setTimeout(() => {
+      this.getServicios();
+    }, 900);
   }
 
   getNombrePaquete(id: number): string {
@@ -298,7 +311,6 @@ export class CrudComponent implements OnInit {
     this.formUpdateServiciosVisible = true;
     this.servicioIdToUpdate = Id;
 
-    // // Cargar los datos del servicio en el formulario
     this.apiService.getServicioById(Id).subscribe((servicio) => {
       this.insertedServiciosForm.patchValue({
         descripcion: servicio.descripcion,
@@ -311,5 +323,30 @@ export class CrudComponent implements OnInit {
 
   OcultarUpdateServiciosFormulario() {
     this.formUpdateServiciosVisible = false;
+  }
+
+  // CONTACTO
+
+  getContacto() {
+    this.contactoService.getContacto().subscribe((contacto) => {
+      this.listacontacto = contacto;
+    });
+  }
+
+  deleteContacto(Id: number) {
+    this.ocultarContacto();
+    this.contactoService.deleteContacto(Id);
+    setTimeout(() => {
+      this.getContacto();
+    }, 900);
+  }
+
+  public btnContacto: boolean = false;
+  mostrarContacto() {
+    this.btnContacto = true;
+  }
+
+  ocultarContacto() {
+    this.btnContacto = false;
   }
 }

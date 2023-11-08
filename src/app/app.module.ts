@@ -15,9 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CrudComponent } from './admin/crud/crud.component';
 import { vistasModule } from './Vistas/vistas.module';
 import { LoginComponent } from './admin/login/login.component';
+import { homeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, CrudComponent, LoginComponent],
+  declarations: [AppComponent, CrudComponent, LoginComponent, homeComponent],
   imports: [
     BrowserModule,
     CommonModule,
