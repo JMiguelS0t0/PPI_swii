@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { apiService } from '../../../services/api.service';
+import { servicioService as apiService } from '../../../services/servicio.service';
 import { Router } from '@angular/router';
 import { LenghtService } from '../../../services/lenght.service';
 import { NgModule } from '@angular/core';
