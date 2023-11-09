@@ -36,6 +36,7 @@ router.post('/catalogo', (req: express.Request, res: express.Response) => {
       else res.status(500).send();
     })
     .catch((e) => {
+      console.log(e);
       res.status(500).json(e);
     });
 });

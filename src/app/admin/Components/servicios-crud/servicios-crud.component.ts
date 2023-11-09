@@ -4,6 +4,7 @@ import { servicioService as apiService } from '../../../services/servicio.servic
 import { catalogoService } from 'src/app/services/catalogo.service';
 import { ServiciosModel } from 'src/app/models';
 import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-servicios-crud',
@@ -18,7 +19,8 @@ export class ServiciosCrudComponent implements OnInit {
     private apiService: apiService,
     private formBuidler: FormBuilder,
     private toastr: ToastrService,
-    private catalogoService: catalogoService
+    private catalogoService: catalogoService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -60,9 +62,43 @@ export class ServiciosCrudComponent implements OnInit {
   insertedServiciosForm = this.formBuidler.group({
     descripcion: ['', [Validators.required]],
     paquete: ['', [Validators.required]],
-    img: ['', [Validators.required]],
+    fimg: ['', [Validators.required]],
     personalizacion: ['', [Validators.required]],
+    img: [''],
   });
+
+  capturarArchivo(event: any): any {
+    const archivoCapturado = event.target.files[0];
+    this.extrarBase64(archivoCapturado).then((imagen: string | null) => {
+      console.log(typeof imagen);
+
+      this.insertedServiciosForm.controls.img.setValue(imagen);
+      // console.log(imagen);
+    });
+    console.log(archivoCapturado);
+    // console.log(event.target.files[0]);
+  }
+  extrarBase64 = ($event: any): Promise<string | null> => {
+    return new Promise((resolve): void => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const reader = new FileReader();
+
+        reader.readAsDataURL($event);
+
+        reader.onload = () => {
+          resolve(reader.result as string);
+        };
+
+        reader.onerror = (error) => {
+          resolve(null);
+        };
+      } catch (e) {
+        resolve(null);
+      }
+    });
+  };
 
   insertServicios() {
     if (this.insertedServiciosForm.valid) {
@@ -99,8 +135,8 @@ export class ServiciosCrudComponent implements OnInit {
     return this.insertedServiciosForm.controls.descripcion;
   }
 
-  get imgServicios() {
-    return this.insertedServiciosForm.controls.img;
+  get fimgServicios() {
+    return this.insertedServiciosForm.controls.fimg;
   }
 
   // FORMULARIO INSERT SERVICIOS
@@ -169,7 +205,6 @@ export class ServiciosCrudComponent implements OnInit {
     this.apiService.getServicioById(Id).subscribe((servicio) => {
       this.insertedServiciosForm.patchValue({
         descripcion: servicio.descripcion,
-        img: servicio.img,
         paquete: servicio.paquete.toString(),
         personalizacion: servicio.personalizacion,
       });
