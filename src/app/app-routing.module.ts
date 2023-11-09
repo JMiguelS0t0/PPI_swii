@@ -40,7 +40,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: CrudComponent,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'contacto/:id',
