@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { catalogoService as apiService} from '../../../services/catalogo.service';
+import { catalogoService as apiService } from '../../../services/catalogo.service';
 import { CatalogoModel } from 'src/app/models';
 import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-catalogo-crud',
   templateUrl: './catalogo-crud.component.html',
@@ -15,7 +16,8 @@ export class CatalogoCrudComponent implements OnInit {
   constructor(
     private apiService: apiService,
     private formBuidler: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -47,9 +49,45 @@ export class CatalogoCrudComponent implements OnInit {
     Id: [''],
     nombre: ['', [Validators.required]],
     descripcion: ['', [Validators.required]],
-    img: ['', [Validators.required]],
+    fimg: ['', [Validators.required]],
     items: ['', [Validators.required]],
+    img: [''],
   });
+
+  // ---------------------------- IMAGEN BASE 64
+
+  capturarArchivo(event: any): any {
+    const archivoCapturado = event.target.files[0];
+    this.extrarBase64(archivoCapturado).then((imagen: string | null) => {
+      console.log(typeof imagen);
+
+      this.insertCatalogoForm.controls.img.setValue(imagen);
+      // console.log(imagen);
+    });
+    console.log(archivoCapturado);
+    // console.log(event.target.files[0]);
+  }
+  extrarBase64 = ($event: any): Promise<string | null> => {
+    return new Promise((resolve): void => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const reader = new FileReader();
+
+        reader.readAsDataURL($event);
+
+        reader.onload = () => {
+          resolve(reader.result as string);
+        };
+
+        reader.onerror = (error) => {
+          resolve(null);
+        };
+      } catch (e) {
+        resolve(null);
+      }
+    });
+  };
 
   insertCatalogo() {
     if (this.insertCatalogoForm.valid) {
@@ -82,9 +120,10 @@ export class CatalogoCrudComponent implements OnInit {
   get descripcion() {
     return this.insertCatalogoForm.controls.descripcion;
   }
-  get img() {
-    return this.insertCatalogoForm.controls.img;
+  get fimg() {
+    return this.insertCatalogoForm.controls.fimg;
   }
+
   get items() {
     return this.insertCatalogoForm.controls.items;
   }
@@ -155,7 +194,7 @@ export class CatalogoCrudComponent implements OnInit {
       this.insertCatalogoForm.patchValue({
         nombre: catalogo.nombre,
         descripcion: catalogo.descripcion,
-        img: catalogo.img,
+        // img: catalogo.img,
         items: catalogo.items,
       });
     });

@@ -62,6 +62,7 @@
     </table>
 </div>
 
+<!-- INSERT -->
 <div class="overlay" *ngIf="formServicios">
     <form class="container formularios" [formGroup]="insertedServiciosForm">
         <div class="">
@@ -115,12 +116,13 @@
 
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="text" class="form-control" formControlName="img">
-                <div *ngIf="imgServicios.invalid && (imgServicios.dirty || imgServicios.touched)" class="text-danger">
-                    <div *ngIf="imgServicios.errors?.['required']">
+                <input type="file" class="form-control" formControlName="fimg" (change)="capturarArchivo($event)">
+                <div *ngIf="fimgServicios.invalid && (fimgServicios.dirty || fimgServicios.touched)"
+                    class="text-danger">
+                    <div *ngIf="fimgServicios.errors?.['required']">
                         La imagen es obligatoria!
                     </div>
-                    <div *ngIf="imgServicios.errors?.['imgServicios']">
+                    <div *ngIf="fimgServicios.errors?.['imgServicios']">
                         Sube una imagen
                     </div>
                 </div>
@@ -186,12 +188,13 @@
 
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="file" class="form-control" formControlName="img">
-                <div *ngIf="imgServicios.invalid && (imgServicios.dirty || imgServicios.touched)" class="text-danger">
-                    <div *ngIf="imgServicios.errors?.['required']">
+                <input type="file" class="form-control" formControlName="fimg" (change)="capturarArchivo($event)">
+                <div *ngIf="fimgServicios.invalid && (fimgServicios.dirty || fimgServicios.touched)"
+                    class="text-danger">
+                    <div *ngIf="fimgServicios.errors?.['required']">
                         La imagen es obligatoria!
                     </div>
-                    <div *ngIf="imgServicios.errors?.['imgServicios']">
+                    <div *ngIf="fimgServicios.errors?.['imgServicios']">
                         Sube una imagen
                     </div>
                 </div>

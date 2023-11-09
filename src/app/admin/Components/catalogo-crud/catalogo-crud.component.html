@@ -96,12 +96,12 @@
 
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="file" class="form-control" formControlName="img">
-                <div *ngIf="img.invalid && (img.dirty || img.touched)" class="text-danger">
-                    <div *ngIf="img.errors?.['required']">
+                <input type="file" class="form-control" formControlName="fimg" (change)="capturarArchivo($event)">
+                <div *ngIf="fimg.invalid && (fimg.dirty || fimg.touched)" class="text-danger">
+                    <div *ngIf="fimg.errors?.['required']">
                         La imagen es obligatoria!
                     </div>
-                    <div *ngIf="img.errors?.['img']">
+                    <div *ngIf="fimg.errors?.['img']">
                         Sube una imagen
                     </div>
                 </div>
@@ -162,12 +162,12 @@
 
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="text" class="form-control" formControlName="img">
-                <div *ngIf="img.invalid && (img.dirty || img.touched)" class="text-danger">
-                    <div *ngIf="img.errors?.['required']">
+                <input type="file" class="form-control" formControlName="fimg" (change)="capturarArchivo($event)">
+                <div *ngIf="fimg.invalid && (fimg.dirty || fimg.touched)" class="text-danger">
+                    <div *ngIf="fimg.errors?.['required']">
                         La imagen es obligatoria!
                     </div>
-                    <div *ngIf="img.errors?.['img']">
+                    <div *ngIf="fimg.errors?.['fimg']">
                         Sube una imagen
                     </div>
                 </div>
