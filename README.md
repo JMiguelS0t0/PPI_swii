@@ -1,6 +1,7 @@
 # PPIAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+Proyecto realizado con Angular, Bootstrap y API con NodeJS/TypeScript
 
 ## Development server
 
